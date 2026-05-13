@@ -20,24 +20,28 @@ form.addEventListener('submit',(e)=>{
         errors=getLoginFormErrors(email_input.value,password_input.value);
 
     }
+
+    if(errors.length>0){
+        e.preventDefault();
+    }
 });
 
 function getSignUpFormErrors(firstname,email,password,repeat_password){
 let errors=[];
 if(firstname==='' || firstname===null){
     errors.push('First name is required');
-    firstname_input.classList.add('incorrect');
+    firstname_input.parentElement.classList.add('incorrect');
 }
 
 if(email==='' || email===null){
     errors.push('Email is required');
-    firstname_input.classList.add('incorrect');
+    email_input.parentElement.classList.add('incorrect');
 }
 
 
 if(password==='' || password===null){
     errors.push('password is required');
-    firstname_input.classList.add('incorrect');
+    password_input.parentElement.classList.add('incorrect');
 }
 return errors;
 }
