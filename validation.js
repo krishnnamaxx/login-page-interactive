@@ -12,13 +12,34 @@ form.addEventListener('submit',(e)=>{
     if(firstname_input){
 
         //if we have firstname input then we are on a signup page
-        errors=getSignUpErrors(firstname_input.value,email_input.value,password_input.value,repeat_password_input.value);
+        errors=getSignUpFormErrors(firstname_input.value,email_input.value,password_input.value,repeat_password_input.value);
     }
     else{
 
         //if we dont have firstname input then we are on a login page
-        errors=getLoginErrors(email_input.value,password_input.value);
+        errors=getLoginFormErrors(email_input.value,password_input.value);
 
     }
 });
+
+function getSignUpFormErrors(firstname,email,password,repeat_password){
+let errors=[];
+if(firstname==='' || firstname===null){
+    errors.push('First name is required');
+    firstname_input.classList.add('incorrect');
+}
+
+if(email==='' || email===null){
+    errors.push('Email is required');
+    firstname_input.classList.add('incorrect');
+}
+
+
+if(password==='' || password===null){
+    errors.push('password is required');
+    firstname_input.classList.add('incorrect');
+}
+return errors;
+}
+
 
